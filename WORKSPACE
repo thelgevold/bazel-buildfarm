@@ -25,6 +25,21 @@ new_http_archive(
     build_file = "BUILD.googleapis",
 )
 
+http_archive(
+    name = "build_bazel_rules_nodejs",
+    url = "https://github.com/bazelbuild/rules_nodejs/archive/0.9.1.zip",
+    strip_prefix = "rules_nodejs-0.9.1",
+    sha256 = "6139762b62b37c1fd171d7f22aa39566cb7dc2916f0f801d505a9aaf118c117f",
+)
+
+# Runs the Sass CSS preprocessor
+http_archive(
+    name = "io_bazel_rules_sass",
+    url = "https://github.com/bazelbuild/rules_sass/archive/0.1.0.zip",
+    strip_prefix = "rules_sass-0.1.0",
+    sha256 = "b243c4d64f054c174051785862ab079050d90b37a1cef7da93821c6981cb9ad4",
+)
+
 load("//3rdparty:workspace.bzl", "maven_dependencies", "declare_maven")
 
 maven_dependencies(declare_maven)
@@ -54,3 +69,7 @@ container_pull(
   repository = "distroless/java",
   digest = "sha256:625c3584876171c6d786d8d8a74b2aaceac06fef450e7fd7322247464f118aa9",
 )
+
+load("@io_bazel_rules_sass//sass:sass_repositories.bzl", "sass_repositories")
+
+sass_repositories()
