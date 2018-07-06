@@ -38,6 +38,13 @@ http_archive(
     sha256 = "6139762b62b37c1fd171d7f22aa39566cb7dc2916f0f801d505a9aaf118c117f",
 )
 
+http_archive(
+    name = "io_bazel_rules_webtesting",
+    url = "https://github.com/bazelbuild/rules_webtesting/archive/v0.2.0.zip",
+    strip_prefix = "rules_webtesting-0.2.0",
+    sha256 = "cecc12f07e95740750a40d38e8b14b76fefa1551bef9332cb432d564d693723c",
+)
+
 # Runs the Sass CSS preprocessor
 http_archive(
     name = "io_bazel_rules_sass",
@@ -74,6 +81,14 @@ container_pull(
   registry = "gcr.io",
   repository = "distroless/java",
   digest = "sha256:625c3584876171c6d786d8d8a74b2aaceac06fef450e7fd7322247464f118aa9",
+)
+
+load("@io_bazel_rules_webtesting//web:repositories.bzl", "browser_repositories", "web_test_repositories")
+
+web_test_repositories()
+browser_repositories(
+    chromium = True,
+    firefox = True,
 )
 
 load("@build_bazel_rules_typescript//:defs.bzl", "ts_setup_workspace")
