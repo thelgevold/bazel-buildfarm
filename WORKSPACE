@@ -7,6 +7,21 @@ http_archive(
     urls = ["https://github.com/google/protobuf/archive/v3.6.0.zip"],
 )
 
+maven_jar(
+    name = "protobuf_java_format",
+    artifact = "com.googlecode.protobuf-java-format:protobuf-java-format:1.4",
+    sha1 = "b8163b6940102c1808814471476f5293dfb419df",
+)
+
+# java_lite_proto_library rules implicitly depend on @com_google_protobuf_javalite//:javalite_toolchain,
+# which is the JavaLite proto runtime (base classes and common utilities).
+http_archive(
+    name = "com_google_protobuf_javalite",
+    sha256 = "d8a2fed3708781196f92e1e7e7e713cf66804bd2944894401057214aff4f468e",
+    strip_prefix = "protobuf-5e8916e881c573c5d83980197a6f783c132d4276",
+    urls = ["https://github.com/google/protobuf/archive/5e8916e881c573c5d83980197a6f783c132d4276.zip"],
+)
+
 # Needed for @grpc_java//compiler:grpc_java_plugin.
 http_archive(
     name = "grpc_java",
@@ -22,6 +37,16 @@ http_archive(
     sha256 = "1aa75917330b820cb239b3c10a936a10f0a46fe215063d4492dd76dc6e1616f4",
 )
 
+local_repository(
+    name = "build_bazel_rules_typescript",
+    path = "node_modules/@bazel/typescript",
+)
+
+local_repository(
+    name = "tslib",
+    path = "node_modules/tslib",
+)
+
 # The API that we implement.
 new_http_archive(
     name = "googleapis",
@@ -33,9 +58,9 @@ new_http_archive(
 
 http_archive(
     name = "build_bazel_rules_nodejs",
-    url = "https://github.com/bazelbuild/rules_nodejs/archive/0.9.1.zip",
-    strip_prefix = "rules_nodejs-0.9.1",
-    sha256 = "6139762b62b37c1fd171d7f22aa39566cb7dc2916f0f801d505a9aaf118c117f",
+    urls = ["https://github.com/bazelbuild/rules_nodejs/archive/0.11.3.zip"],
+    strip_prefix = "rules_nodejs-0.11.3",
+    sha256 = "e8842fa5f5e38f2c826167ff94323d4b5aabd13217cee867d971d6f860cfd730"
 )
 
 http_archive(
@@ -113,3 +138,4 @@ ts_setup_workspace()
 load("@io_bazel_rules_sass//sass:sass_repositories.bzl", "sass_repositories")
 
 sass_repositories()
+

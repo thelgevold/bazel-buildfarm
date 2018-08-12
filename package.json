@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "react": "16.4.1",
+    "react-dom": "16.4.1"
+  },
+  "devDependencies": {
+    "@bazel/ibazel": "0.4.0",
+    "@types/react": "16.4.1",
+    "@bazel/typescript": "0.16.0",
+    "@types/react-dom": "16.0.6",
+    "typescript": "2.9.1",
+    "concurrently": "3.5.1"
+  }
+}

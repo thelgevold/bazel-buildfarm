@@ -1,7 +1,2 @@
 bazel-*
-worker1
-worker2
-worker3
-worker4
-worker5
-worker6
+node_modules

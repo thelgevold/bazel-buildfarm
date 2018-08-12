@@ -219,3 +219,18 @@ container_image(
     ],
     visibility = ["//visibility:public"],
 )
+
+filegroup(
+    name = "node_modules",
+    srcs = glob([
+        "node_modules/typescript/**",
+        "node_modules/@types/**",
+        "node_modules/react/**",
+        "node_modules/tsutils/**",
+        "node_modules/tslib/**",
+        "node_modules/protobufjs/**",
+        "node_modules/bytebuffer/**",
+        "node_modules/react-dom/**",
+        "node_modules/long/**",
+    ]),
+)
