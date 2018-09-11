@@ -30,6 +30,7 @@ http_archive(
     urls = ["https://github.com/grpc/grpc-java/archive/v1.8.0.zip"],
 )
 
+
 http_archive(
     name = "build_bazel_rules_typescript",
     url = "https://github.com/bazelbuild/rules_typescript/archive/0.15.0.zip",
@@ -48,6 +49,7 @@ local_repository(
 )
 
 # The API that we implement.
+
 new_http_archive(
     name = "googleapis",
     sha256 = "27ade61091175f5bad45ec207f4dde524d3c8148903b60fa5641e29e3b9c5fa9",
@@ -82,6 +84,15 @@ http_archive(
     name = "io_bazel_rules_go",
     url = "https://github.com/bazelbuild/rules_go/releases/download/0.11.0/rules_go-0.11.0.tar.gz",
     sha256 = "f70c35a8c779bb92f7521ecb5a1c6604e9c3edd431e50b6376d7497abc8ad3c1",
+)    
+
+# The API that we implement.
+new_http_archive(
+    name = "remote_apis",
+    sha256 = "865c6950a64b859cf211761330e5d13e6c4b54e22a454ae1195238594299de34",
+    url = "https://github.com/bazelbuild/remote-apis/archive/fdeb922b595df28650d12fc2335c4426df2fc726.zip",
+    strip_prefix = "remote-apis-fdeb922b595df28650d12fc2335c4426df2fc726",
+    build_file = "BUILD.remote_apis",
 )
 
 load("//3rdparty:workspace.bzl", "maven_dependencies", "declare_maven")
